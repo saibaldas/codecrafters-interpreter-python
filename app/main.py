@@ -1,5 +1,10 @@
 import sys
 
+# Mapping for single-character tokens
+single_char_tokens = {
+    "(": "LEFT_PAREN",
+    ")": "RIGHT_PAREN",
+}
 
 def main():
     if len(sys.argv) < 3:
@@ -21,7 +26,12 @@ def main():
 
     # Uncomment this block to pass the first stage
     if file_contents:
-        raise NotImplementedError("Scanner not implemented")
+    # Go through each character in the file
+        for char in file_contents:
+            if char in single_char_tokens:
+                token_type = single_char_tokens[char]
+                print(f"{token_type} {char} null")
+        print("EOF  null") 
     else:
         print("EOF  null") # Placeholder, replace this line when implementing the scanner
 
